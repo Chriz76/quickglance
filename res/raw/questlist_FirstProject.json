@@ -1,0 +1,48 @@
+[
+    {
+        "id":"stonedbrother",
+        "name":"Turned to stone",
+        "showInLog":1,
+        "stages":[
+            {
+                "progress":10,
+                "logText":"I talked to Anakis. He told me, that his brother went into the cave and never came out again."
+            },
+            {
+                "progress":20,
+                "logText":"I agreed to help Anakis to find his brother."
+            },
+            {
+                "progress":30,
+                "logText":"Anakis heared that there is a monster in the cave that can turn people to stone."
+            },
+            {
+                "progress":40,
+                "logText":"I found a stone statue looking like a real human."
+            },
+            {
+                "progress":50,
+                "logText":"I told Anakis about the statue. He thinks that it is his brother and thanks me for helping.",
+                "rewardExperience":50
+            },
+            {
+                "progress":60,
+                "logText":"Anakis asked me if I could take revenge for his brother."
+            },
+            {
+                "progress":70,
+                "logText":"I agreed to take revenge for Anakis brother by finding the stone turning monster."
+            },
+            {
+                "progress":80,
+                "logText":"I killed the Basilisk, that turns people to stone."
+            },
+            {
+                "progress":90,
+                "logText":"I told Anakis about killing the Basilisk and he rewarded me with some gold.",
+                "rewardExperience":100,
+                "finishesQuest":1
+            }
+        ]
+    }
+]
