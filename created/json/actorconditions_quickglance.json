@@ -5,17 +5,18 @@
         "name":"Turning to stone",
         "category":"physical",
         "roundEffect":{
+            "visualEffectID":"greenSplash",
             "increaseCurrentHP":{
-                "min":-100000,
-                "max":-100000
+                "min":-10,
+                "max":-10
             },
             "increaseCurrentAP":{
-                "min":-1000,
-                "max":-1000
+                "min":0,
+                "max":0
             }
         },
         "abilityEffect":{
-            "increaseMoveCost":1000
+            "increaseMoveCost":0
         }
     }
 ]

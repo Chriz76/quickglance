@@ -42,12 +42,38 @@
         ]
     },
     {
-        "id":"quick_glance_hidden",
-        "name":"quick_glance_hidden",
+        "id":"quick_glance_hidden_found_statue",
+        "name":"quick_glance_hidden_found_statue",
         "stages":[
             {
                 "progress":10,
                 "logText":"Found Statue"
+            }
+        ]
+    },
+    {
+        "id":"quick_glance_hidden_position",
+        "name":"quick_glance_hidden_position",
+        "stages":[
+            {
+                "progress":10,
+                "logText":"Position 1"
+            },
+            {
+                "progress":20,
+                "logText":"Position 2"
+            },
+            {
+                "progress":30,
+                "logText":"Position 3"
+            },
+            {
+                "progress":100,
+                "logText":"Sister statue message shown"
+            },
+            {
+                "progress":90,
+                "logText":"Reset Position"
             }
         ]
     }

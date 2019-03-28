@@ -1,9 +1,9 @@
 [
     {
-        "id":"basiliskcave2_check_turn_to_stone",
+        "id":"basiliskcave2_check_turn_to_stone1",
         "replies":[
             {
-                "nextPhraseID":"basiliskcave2_turn_to_stone",
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position1",
                 "requires":[
                     {
                         "requireType":"killedMonster",
@@ -14,11 +14,6 @@
                     {
                         "requireType":"wear",
                         "requireID":"hand_mirror",
-                        "negate":true
-                    },
-                    {
-                        "requireType":"hasActorCondition",
-                        "requireID":"turn_to_stone",
                         "negate":true
                     }
                 ]
@@ -32,7 +27,7 @@
             {
                 "rewardType":"actorCondition",
                 "rewardID":"turn_to_stone",
-                "value":1000
+                "value":100
             }
         ]
     },
@@ -121,7 +116,7 @@
                 "requires":[
                     {
                         "requireType":"questProgress",
-                        "requireID":"quick_glance_hidden",
+                        "requireID":"quick_glance_hidden_found_statue",
                         "value":10
                     }
                 ]
@@ -157,7 +152,7 @@
                 "requires":[
                     {
                         "requireType":"questProgress",
-                        "requireID":"quick_glance_hidden",
+                        "requireID":"quick_glance_hidden_found_statue",
                         "value":10
                     }
                 ]
@@ -230,7 +225,8 @@
     },
     {
         "id":"anakis_thank_finding_sister",
-        "message":"Oh no, thats her! Thank you for helping me finding out what happened to her.",
+        "message":"Oh no, that's her! Thank you for helping me to findi out what happened to her.",
+        "switchToNPC":"old_basilisk",
         "replies":[
             {
                 "text":"N",
@@ -283,31 +279,50 @@
         "rewards":[
             {
                 "rewardType":"questProgress",
-                "rewardID":"quick_glance_hidden",
+                "rewardID":"quick_glance_hidden_found_statue",
                 "value":10
+            },
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":100
             }
         ]
     },
     {
-        "id":"basiliskcave2_check_brother_statue",
+        "id":"basiliskcave2_check_sister_statue",
         "replies":[
             {
-                "nextPhraseID":"basiliskcave2_brother_statue_questprogress",
+                "nextPhraseID":"basiliskcave2_sister_statue_questprogress",
                 "requires":[
                     {
                         "requireType":"questProgress",
                         "requireID":"quick_glance",
                         "value":10
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":40,
+                        "negate":true
                     }
                 ]
             },
             {
-                "nextPhraseID":"sister_statue"
+                "nextPhraseID":"sister_statue",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_position",
+                        "value":100,
+                        "negate":true
+                    }
+                ]
             }
         ]
     },
     {
-        "id":"basiliskcave2_brother_statue_questprogress",
+        "id":"basiliskcave2_sister_statue_questprogress",
         "replies":[
             {
                 "nextPhraseID":"sister_statue"
@@ -331,7 +346,7 @@
                 "requires":[
                     {
                         "requireType":"questProgress",
-                        "requireID":"quick_glance_hidden",
+                        "requireID":"quick_glance_hidden_found_statue",
                         "value":10
                     }
                 ]
@@ -343,6 +358,168 @@
             {
                 "text":"No, that's none of my business.",
                 "nextPhraseID":"X"
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_check_turn_to_stone2",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position2",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_check_turn_to_stone3",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position3",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position1",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":10
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":20
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":30
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":90
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position2",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":20
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":10
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":30
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":90
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position3",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":30
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":20
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":10
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":90
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave_reset",
+        "rewards":[
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":10
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":20
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":30
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":100
+            },
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":90
             }
         ]
     }
