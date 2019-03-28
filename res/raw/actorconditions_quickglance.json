@@ -1,6 +1,6 @@
 [
     {
-        "id":"turntostone",
+        "id":"turn_to_stone",
         "iconID":"actorconditions_1:89",
         "name":"Turning to stone",
         "category":"physical",

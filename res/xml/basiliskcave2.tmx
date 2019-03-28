@@ -181,6 +181,9 @@
  <tileset firstgid="7449" name="map_window_2" tilewidth="32" tileheight="32">
   <image source="../drawable/map_window_2.png" width="512" height="256"/>
  </tileset>
+ <tileset firstgid="7577" name="map_trail_1" tilewidth="32" tileheight="32">
+  <image source="../drawable/map_trail_1.png" width="512" height="256"/>
+ </tileset>
  <layer name="Ground" width="20" height="13">
   <data encoding="base64" compression="zlib">
    eJytksEJwCAMRYM39792BfXSu13BdoV2DxUqhOBvk9LDQ5DwBPOSIzoaqycq7cyNzUAUpNs16M7dQBZe6eucTk9hXuSzMrxB4VvcnNnsmy+wf5nt4qsP7RbNI99wIaf8A94Ncj11hxqM7D15Z+3a0q4GS7saLv8vFWpxydY=
@@ -188,17 +191,17 @@
  </layer>
  <layer name="Objects" width="20" height="13">
   <data encoding="base64" compression="zlib">
-   eJxjYKA+WMNEnDpOItWBwAdBVL44kl4hKFuSCVWeiwjzbwgSVkMI5LAyMFwUY2DYwgnhfxaAYGLBIlZUvoEQee5ADqNqJDPJNQ8ZVLMSVjMKaAew5SlS8g8xAJR/ABrxCyw=
+   eJxjYKA+WMNEnDpOItWBwAdBVL44kl4hKFuSCVWeiwjzbwgSVkMMWAk0ZwsnhP1ZgIHhiwDxehexovINhMhzw25ZBLsayUxyzVuNwzxkcWoBWpg5nAC2PEVK/iEGgPIPADQWDL4=
   </data>
  </layer>
  <layer name="Above" width="20" height="13">
   <data encoding="base64" compression="zlib">
-   eJxjYGBgOCzGwHAJiKkFDkPNWs1EXfOoZeZhNL8+FoBgYgA2+9HNg4HZWNTOZUJgXObiMo9cQG3z0N0OAtj8Soo8spmUmjUKyAcAz3QRng==
+   eJxjYGBgWC3LwLALiKkFVkPNWs1EXfOoZeZqNL8+FmBgeCJApF4s9qObBwOzsaidy4TAuMzFZR65gNrmobsdBLD5lRR5ZDMpNQsd/CMybkcBAwMAWBASJQ==
   </data>
  </layer>
  <layer name="Walkable" width="20" height="13">
   <data encoding="base64" compression="zlib">
-   eJzbKMbAsBGIQWCjGPUwNc1DBtQ2j1RATTfiUk+q3bj00co8QnKUxgs10+EoJg0DAGhYong=
+   eJybKcvAMBOIQWCmLPUwNc1DBtQ2j1SAz6+kuhGXelLsxqePVuYRkqM0XqiZDkcxaRgA2iiUlw==
   </data>
  </layer>
  <objectgroup name="Mapevents">
@@ -208,8 +211,10 @@
     <property name="place" value="south"/>
    </properties>
   </object>
-  <object name="mirror" type="container" x="576" y="192" width="32" height="32"/>
-  <object name="checkturntostone" type="script" x="64" y="128" width="96" height="64"/>
+  <object name="basiliskcave2" type="container" x="576" y="192" width="32" height="32"/>
+  <object name="basiliskcave2_check_turn_to_stone" type="script" x="32" y="128" width="128" height="64"/>
+  <object name="basiliskcave2_check_brother_statue" type="script" x="32" y="96" width="64" height="32"/>
+  <object name="basiliskcave2_2" type="container" x="576" y="160" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="Spawn">
   <object name="basiliskcave2_boss" type="spawn" x="183" y="186" width="42" height="38">

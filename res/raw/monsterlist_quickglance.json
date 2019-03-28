@@ -1,7 +1,7 @@
 [
     {
-        "id":"turntostonebasilisk",
-        "name":"Giant Basilisk",
+        "id":"old_basilisk",
+        "name":"Old Basilisk",
         "iconID":"monsters_rats:4",
         "maxHP":1,
         "unique":1,
@@ -15,6 +15,16 @@
         "attackCost":7,
         "attackChance":40,
         "blockChance":50,
-        "damageResistance":2
+        "damageResistance":0,
+        "deathEffect":{
+            
+        }
+    },
+    {
+        "id":"anakis",
+        "name":"Anakis",
+        "iconID":"monsters_ld1:84",
+        "spawnGroup":"anakis",
+        "phraseID":"anakis_start"
     }
 ]

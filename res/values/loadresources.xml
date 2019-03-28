@@ -21,8 +21,8 @@
         <item>@raw/actorconditions_trader_teksin</item>
         <!--Added by ATCS v0.6.11 for project stoutford_combined-->
         <item>@raw/actorconditions_stoutford_combined</item>
-        <!--Added by ATCS v0.6.14 for project FirstProject-->
-        <item>@raw/actorconditions_FirstProject</item>
+        <!--Added by ATCS v0.6.14 for project quickglance-->
+        <item>@raw/actorconditions_quickglance</item>
     </array>
         
     <array name="loadresource_items">
@@ -59,8 +59,8 @@
         <item>@raw/itemlist_stoutford_combined</item>
         <!--Added by ATCS v0.6.14 for project bugfix_0_7_4-->
         <item>@raw/itemlist_bugfix_0_7_4</item>
-        <!--Added by ATCS v0.6.14 for project FirstProject-->
-        <item>@raw/itemlist_FirstProject</item>
+        <!--Added by ATCS v0.6.14 for project quickglance-->
+        <item>@raw/itemlist_quickglance</item>
     </array>
         
     <array name="loadresource_droplists">
@@ -92,8 +92,8 @@
         <item>@raw/droplists_stoutford_combined</item>
         <!--Added by ATCS v0.6.14 for project bugfix_0_7_4-->
         <item>@raw/droplists_bugfix_0_7_4</item>
-        <!--Added by ATCS v0.6.14 for project FirstProject-->
-        <item>@raw/droplists_FirstProject</item>
+        <!--Added by ATCS v0.6.14 for project quickglance-->
+        <item>@raw/droplists_quickglance</item>
     </array>
         
     <array name="loadresource_quests">
@@ -119,8 +119,8 @@
         <item>@raw/questlist_guynmart</item>
         <!--Added by ATCS v0.6.11 for project stoutford_combined-->
         <item>@raw/questlist_stoutford_combined</item>
-        <!--Added by ATCS v0.6.14 for project FirstProject-->
-        <item>@raw/questlist_FirstProject</item>
+        <!--Added by ATCS v0.6.14 for project quickglance-->
+        <item>@raw/questlist_quickglance</item>
     </array>
         
     <array name="loadresource_conversationlists">
@@ -293,8 +293,8 @@
         <item>@raw/conversationlist_stoutford_combined</item>
         <!--Added by ATCS v0.6.14 for project bugfix_0_7_4-->
         <item>@raw/conversationlist_bugfix_0_7_4</item>
-        <!--Added by ATCS v0.6.14 for project FirstProject-->
-        <item>@raw/conversationlist_FirstProject</item>
+        <!--Added by ATCS v0.6.14 for project quickglance-->
+        <item>@raw/conversationlist_quickglance</item>
     </array>
         
     <array name="loadresource_monsters">
@@ -332,8 +332,8 @@
         <item>@raw/monsterlist_trader_teksin</item>
         <!--Added by ATCS v0.6.11 for project stoutford_combined-->
         <item>@raw/monsterlist_stoutford_combined</item>
-        <!--Added by ATCS v0.6.14 for project FirstProject-->
-        <item>@raw/monsterlist_FirstProject</item>
+        <!--Added by ATCS v0.6.14 for project quickglance-->
+        <item>@raw/monsterlist_quickglance</item>
     </array>
         
     <array name="loadresource_maps">
@@ -849,7 +849,7 @@
         <item>@xml/lookout_lower</item>
         <item>@xml/lookout_upper</item>
         <item>@xml/waytolake12</item>
-        <!--Added by ATCS v0.6.14 for project FirstProject-->
+        <!--Added by ATCS v0.6.14 for project quickglance-->
         <item>@xml/basiliskcave1</item>
         <item>@xml/basiliskcave2</item>
     </array>
