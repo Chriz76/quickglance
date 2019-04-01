@@ -1,37 +1,5 @@
 [
     {
-        "id":"basiliskcave2_check_turn_to_stone1",
-        "replies":[
-            {
-                "nextPhraseID":"basiliskcave2_turn_to_stone_position1",
-                "requires":[
-                    {
-                        "requireType":"killedMonster",
-                        "requireID":"old_basilisk",
-                        "value":1,
-                        "negate":true
-                    },
-                    {
-                        "requireType":"wear",
-                        "requireID":"hand_mirror",
-                        "negate":true
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id":"basiliskcave2_turn_to_stone",
-        "message":"You see an old Basilisk. And he glances at you. \n\nWhen Suddenly you feel your movements getting slower and your heartbeat drop... \n...while you are slowly turning to stone.",
-        "rewards":[
-            {
-                "rewardType":"actorCondition",
-                "rewardID":"turn_to_stone",
-                "value":100
-            }
-        ]
-    },
-    {
         "id":"anakis_start",
         "replies":[
             {
@@ -91,6 +59,22 @@
                 ]
             },
             {
+                "nextPhraseID":"anakis_thank_healing_sister",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":90,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"questLatestProgress",
+                        "requireID":"quick_glance",
+                        "value":85
+                    }
+                ]
+            },
+            {
                 "nextPhraseID":"anakis_did_you_take_revenge",
                 "requires":[
                     {
@@ -102,10 +86,35 @@
                 ]
             },
             {
-                "nextPhraseID":"anakis_thank_taking_revenge"
+                "nextPhraseID":"anakis_will_leave"
             }
         ]
     },
+    {
+        "id":"anakis_meet_2nd_time",
+        "message":"Hello again. Can you please help me to find my sister?",
+        "replies":[
+            {
+                "text":"I found a statue looking almost like a real woman. [Describe the statue to Anakis]",
+                "nextPhraseID":"anakis_thank_finding_sister",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":10
+                    }
+                ]
+            },
+            {
+                "text":"Yes, I will search for your sister.",
+                "nextPhraseID":"anakis_agreed_find_sister"
+            },
+            {
+                "text":"No, that's none of my business.",
+                "nextPhraseID":"X"
+            }
+        ]
+    },	
     {
         "id":"anakis_help_find_sister",
         "message":"Hello my name is Anakis. I hope you can you help me. Yesterday my sister went into that cave and did not come out yet.",
@@ -139,6 +148,17 @@
         ]
     },
     {
+        "id":"anakis_agreed_find_sister",
+        "message":"Thank you. My sister has long hair and is wearing a long skirt.\n\nPlease take care. There are rumors about a Basilisk in the cave that will instantly kill you by turning you to stone when your eyes meet its eyes. You would better stay away of it if you are not properly equipped.",
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance",
+                "value":20
+            }
+        ]
+    },	
+    {
         "id":"anakis_did_you_find_my_sister",
         "message":"Did you find my sister?",
         "replies":[
@@ -160,11 +180,33 @@
         ]
     },
     {
-        "id":"anakis_can_you_take_revenge",
-        "message":"Can you help me to find out, who did that to my sister and take revenge? ",
+        "id":"anakis_thank_finding_sister",
+        "message":"Oh no, that's her! Thank you for helping me to find out what happened to her. \n\nI think it was the Basilisk, who did that to her.",
         "replies":[
             {
-                "text":"Yes, I will take revenge.",
+                "text":"N",
+                "nextPhraseID":"anakis_can_you_take_revenge"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance",
+                "value":50
+            },
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance",
+                "value":40
+            }
+        ]
+    },	
+    {
+        "id":"anakis_can_you_take_revenge",
+        "message":"Can you find the Basilisk and kill it? Its blood is magical and could maybe help my sister.",
+        "replies":[
+            {
+                "text":"Yes, I will help you.",
                 "nextPhraseID":"anakis_agreed_take_revenge"
             },
             {
@@ -192,12 +234,22 @@
         ]
     },
     {
+        "id":"anakis_agreed_take_revenge",
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance",
+                "value":70
+            }
+        ]
+    },	
+    {
         "id":"anakis_did_you_take_revenge",
-        "message":"Did you take revenge for my sister?",
+        "message":"Did you kill the Basilisk and did you get some Basilisk blood?",
         "replies":[
             {
-                "text":"Yes, I found a Basilisk and killed it.",
-                "nextPhraseID":"anakis_thank_taking_revenge",
+                "text":"I found the Basilisk and killed it, but I decided to take the blood for myself.",
+                "nextPhraseID":"anakis_sad_blood_not_use_for_sister",
                 "requires":[
                     {
                         "requireType":"killedMonster",
@@ -212,56 +264,17 @@
             }
         ]
     },
-    {
-        "id":"anakis_agreed_find_sister",
-        "message":"Thank you. My sister has long hair and is wearing a long skirt.\n\nPlease take care. There are rumors about a creature in the cave that will kill you when your eyes meet its eyes. You would better stay away of it if you are not properly equipped.",
-        "rewards":[
-            {
-                "rewardType":"questProgress",
-                "rewardID":"quick_glance",
-                "value":20
-            }
-        ]
-    },
-    {
-        "id":"anakis_thank_finding_sister",
-        "message":"Oh no, that's her! Thank you for helping me to findi out what happened to her.",
-        "switchToNPC":"old_basilisk",
-        "replies":[
-            {
-                "text":"N",
-                "nextPhraseID":"anakis_can_you_take_revenge"
-            }
-        ],
-        "rewards":[
-            {
-                "rewardType":"questProgress",
-                "rewardID":"quick_glance",
-                "value":50
-            },
-            {
-                "rewardType":"questProgress",
-                "rewardID":"quick_glance",
-                "value":40
-            }
-        ]
-    },
-    {
-        "id":"anakis_agreed_take_revenge",
-        "rewards":[
-            {
-                "rewardType":"questProgress",
-                "rewardID":"quick_glance",
-                "value":70
-            }
-        ]
-    },
+
     {
         "id":"anakis_thank_taking_revenge",
-        "message":"Thank you so much. Now i will go and morn for my brother.",
+        "message":"Oh no. The Basillisks fresh blood is magical and could have saved the life of my sister. Now it is too late. I will go now and morn for my sister. ",
         "replies":[
             {
-                "text":"It was a pleasure for me. Goodbye.",
+                "text":"I am sorry. Goodbye.",
+                "nextPhraseID":"R"
+            },
+            {
+                "text":"Bad luck. Goodbye.",
                 "nextPhraseID":"R"
             }
         ],
@@ -270,6 +283,50 @@
                 "rewardType":"questProgress",
                 "rewardID":"quick_glance",
                 "value":90
+            }
+        ]
+    },
+    {
+        "id":"anakis_thank_healing_sister",
+        "message":"Thank you so much for rescuing my sister. She just came out of the cave and told me what you did for her. I will now go home, too.",
+        "replies":[
+            {
+                "text":"N",
+                "nextPhraseID":"R"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance",
+                "value":90
+            }
+        ]
+    },
+    {
+        "id":"anakis_sad_blood_not_use_for_sister",
+        "message":"Oh no. The Basillisks fresh blood is magical and could have saved the life of my sister. Now it is too late. Why did you not even try to help her? Now i will go and morn for my sister. ",
+        "replies":[
+            {
+                "text":"N",
+                "nextPhraseID":"R"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance",
+                "value":90
+            }
+        ]
+    },
+    {
+        "id":"anakis_will_leave",
+        "message":"I will leave now.",
+        "replies":[
+            {
+                "text":"N",
+                "nextPhraseID":"R"
             }
         ]
     },
@@ -292,6 +349,26 @@
     {
         "id":"basiliskcave2_check_sister_statue",
         "replies":[
+            {
+                "nextPhraseID":"X",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":20
+                    }
+                ]
+            },
+            {
+                "nextPhraseID":"X",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":50
+                    }
+                ]
+            },
             {
                 "nextPhraseID":"basiliskcave2_sister_statue_questprogress",
                 "requires":[
@@ -337,27 +414,23 @@
         ]
     },
     {
-        "id":"anakis_meet_2nd_time",
-        "message":"Hello again. Can you please help me to find my sister?",
+        "id":"basiliskcave2_check_turn_to_stone1",
         "replies":[
             {
-                "text":"I found a statue looking almost like a real woman. [Describe the statue to Anakis]",
-                "nextPhraseID":"anakis_thank_finding_sister",
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position1",
                 "requires":[
                     {
-                        "requireType":"questProgress",
-                        "requireID":"quick_glance_hidden_found_statue",
-                        "value":10
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
                     }
                 ]
-            },
-            {
-                "text":"Yes, I will search for your sister.",
-                "nextPhraseID":"anakis_agreed_find_sister"
-            },
-            {
-                "text":"No, that's none of my business.",
-                "nextPhraseID":"X"
             }
         ]
     },
@@ -430,6 +503,11 @@
                 "rewardType":"removeQuestProgress",
                 "rewardID":"quick_glance_hidden_position",
                 "value":90
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":80
             }
         ]
     },
@@ -460,6 +538,11 @@
                 "rewardType":"removeQuestProgress",
                 "rewardID":"quick_glance_hidden_position",
                 "value":90
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":80
             }
         ]
     },
@@ -490,11 +573,40 @@
                 "rewardType":"removeQuestProgress",
                 "rewardID":"quick_glance_hidden_position",
                 "value":90
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":80
             }
         ]
-    },
+    },	
+    {
+        "id":"basiliskcave2_turn_to_stone",
+        "message":"You see an old Basilisk. And he glances at you. \n\nWhen Suddenly you feel your movements getting slower and your heartbeat drop... \n...while you are slowly turning to stone.",
+        "rewards":[
+            {
+                "rewardType":"actorCondition",
+                "rewardID":"turn_to_stone",
+                "value":998
+            }
+        ]
+    },	
+
     {
         "id":"basiliskcave_reset",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave_reset2",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":20
+                    }
+                ]
+            }
+        ],
         "rewards":[
             {
                 "rewardType":"removeQuestProgress",
@@ -519,7 +631,171 @@
             {
                 "rewardType":"questProgress",
                 "rewardID":"quick_glance_hidden_position",
+                "value":80
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave_reset2",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave_left_after_killing_basilisk",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1
+                    }
+                ]
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":80
+            },
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
                 "value":90
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_check_heal_sister",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_dried_blood",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":60
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":30
+                    }
+                ]
+            },
+            {
+                "nextPhraseID":"basiliskcave2_dried_blood",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":60
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":40
+                    }
+                ]
+            },
+            {
+                "nextPhraseID":"basiliskcave2_ask_heal_sister",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":30,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":60
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_ask_heal_sister",
+        "message":"You killed the Basilisk and the blood flows out of its wounds.",
+        "replies":[
+            {
+                "text":"I pour the blood over the stone statue.",
+                "nextPhraseID":"basiliskcave2_decided_to_heal"
+            },
+            {
+                "text":"I keep the blood for myself using an empty vial I found.",
+                "nextPhraseID":"basiliskcave2_keep_blood"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance",
+                "value":80
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_decided_to_heal",
+        "message":"Slowly the stone statue gets colorful and starts to move. You healed the woman!\n\nAfter she is back to life, she thanks you and tells you, that she is Anakis' sister.\n\nShe will leave the cave now and meet her waitng brother.",
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_found_statue",
+                "value":20
+            },
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance",
+                "value":85
+            },
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_found_statue",
+                "value":30
+            }
+        ]
+    },	
+    {
+        "id":"basiliskcave2_keep_blood",
+        "rewards":[
+            {
+                "rewardType":"giveItem",
+                "rewardID":"basilisk_blood",
+                "value":1
+            },
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_found_statue",
+                "value":30
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_dried_blood",
+        "message":"There is only some dried up blood on the ground left."
+    },
+    {
+        "id":"basiliskcave_left_after_killing_basilisk",
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_found_statue",
+                "value":40
             }
         ]
     }

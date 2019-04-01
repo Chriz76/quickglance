@@ -18,5 +18,16 @@
         "abilityEffect":{
             "increaseMoveCost":0
         }
+    },
+    {
+        "id":"stoneskin",
+        "iconID":"actorconditions_1:84",
+        "name":"Stone skin",
+        "category":"physical",
+        "isPositive":1,
+        "abilityEffect":{
+            "increaseBlockChance":20,
+            "increaseDamageResistance":3
+        }
     }
 ]

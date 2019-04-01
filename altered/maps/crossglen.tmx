@@ -249,8 +249,8 @@
   </object>
   <object name="basiliskcave" type="mapchange" x="225" y="0" width="32" height="32">
    <properties>
-    <property name="map" value="basiliskcave1"/>
-    <property name="place" value="entrance"/>
+    <property name="map" value="brimhaven7"/>
+    <property name="place" value="south"/>
    </properties>
   </object>
  </objectgroup>
@@ -301,11 +301,6 @@
   <object name="halvor" type="spawn" x="736" y="608" width="32" height="32">
    <properties>
     <property name="spawngroup" value="halvor"/>
-   </properties>
-  </object>
-  <object name="anakis" type="spawn" x="191" y="30" width="32" height="32">
-   <properties>
-    <property name="spawngroup" value="anakis"/>
    </properties>
   </object>
  </objectgroup>

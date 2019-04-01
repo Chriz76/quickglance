@@ -19,7 +19,7 @@
             {
                 "progress":50,
                 "logText":"I told Anakis about the statue. He thinks that it is his sister and thanks me for helping him.",
-                "rewardExperience":50
+                "rewardExperience":100
             },
             {
                 "progress":60,
@@ -34,9 +34,14 @@
                 "logText":"I killed the Basilisk."
             },
             {
+                "progress":85,
+                "logText":"I saved the life of Anakis' sister.",
+                "rewardExperience":400
+            },
+            {
                 "progress":90,
-                "logText":"I told Anakis about killing the Basilisk and he thanked me.",
-                "rewardExperience":100,
+                "logText":"I told Anakis about killing the Basilisk.",
+                "rewardExperience":1000,
                 "finishesQuest":1
             }
         ]
@@ -48,6 +53,18 @@
             {
                 "progress":10,
                 "logText":"Found Statue"
+            },
+            {
+                "progress":20,
+                "logText":"Removed Statue"
+            },
+            {
+                "progress":30,
+                "logText":"Decided what to do with the Basilisks blood"
+            },
+            {
+                "progress":40,
+                "logText":"Killed Basilisk and left the room"
             }
         ]
     },
@@ -68,12 +85,16 @@
                 "logText":"Position 3"
             },
             {
-                "progress":100,
-                "logText":"Sister statue message shown"
+                "progress":80,
+                "logText":"Reset Walkable Statue exists"
             },
             {
                 "progress":90,
-                "logText":"Reset Position"
+                "logText":"Reset Walkable Statue removed"
+            },
+            {
+                "progress":100,
+                "logText":"Sister statue message shown"
             }
         ]
     }

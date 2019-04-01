@@ -2,7 +2,7 @@
     {
         "id":"old_basilisk",
         "name":"Old Basilisk",
-        "iconID":"monsters_rats:4",
+        "iconID":"monsters_rltiles2:77",
         "maxHP":1,
         "unique":1,
         "monsterClass":"reptile",
@@ -11,7 +11,6 @@
             "max":9
         },
         "spawnGroup":"basiliskcave2_boss",
-        "droplistID":"cavecritter",
         "attackCost":7,
         "attackChance":40,
         "blockChance":50,
@@ -24,6 +23,7 @@
         "id":"anakis",
         "name":"Anakis",
         "iconID":"monsters_ld1:84",
+        "unique":1,
         "spawnGroup":"anakis",
         "phraseID":"anakis_start"
     }
