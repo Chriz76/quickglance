@@ -86,13 +86,39 @@
                 ]
             },
             {
-                "nextPhraseID":"anakis_will_leave"
+                "nextPhraseID":"anakis_at_home_thanks",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":85
+                    }
+                ]
+            },
+            {
+                "nextPhraseID":"anakis_at_home_angry",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":30
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":85,
+                        "negate":true
+                    }
+                ]
+            },
+            {
+                "nextPhraseID":"anakis_at_home_morning"
             }
         ]
     },
     {
         "id":"anakis_meet_2nd_time",
-        "message":"Hello again. Can you please help me to find my sister?",
+        "message":"Hello again. Can you please help me to find my sister Juttarka?",
         "replies":[
             {
                 "text":"I found a statue looking almost like a real woman. [Describe the statue to Anakis]",
@@ -114,10 +140,10 @@
                 "nextPhraseID":"X"
             }
         ]
-    },	
+    },
     {
         "id":"anakis_help_find_sister",
-        "message":"Hello my name is Anakis. I hope you can you help me. Yesterday my sister went into that cave and did not come out yet.",
+        "message":"Hello my name is Anakis. I hope you can you help me. Yesterday my sister Juttarka went into that cave and did not come out yet.",
         "replies":[
             {
                 "text":"I found a statue looking almost like a real woman. [Describe the statue to Anakis]",
@@ -132,7 +158,15 @@
             },
             {
                 "text":"Yes, I will search for your sister.",
-                "nextPhraseID":"anakis_agreed_find_sister"
+                "nextPhraseID":"anakis_agreed_find_sister",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":10,
+                        "negate":true
+                    }
+                ]
             },
             {
                 "text":"No, that's none of my business.",
@@ -149,7 +183,7 @@
     },
     {
         "id":"anakis_agreed_find_sister",
-        "message":"Thank you. My sister has long hair and is wearing a long skirt.\n\nPlease take care. There are rumors about a Basilisk in the cave that will instantly kill you by turning you to stone when your eyes meet its eyes. You would better stay away of it if you are not properly equipped.",
+        "message":"Thank you. My sister has long hair and is wearing a long skirt.\n\nPlease take care. Fangwurm the priest of Brimhaven told us about a Basilisk in the cave that will turn you to stone when you go near him an your eyes meet its eyes.",
         "rewards":[
             {
                 "rewardType":"questProgress",
@@ -157,7 +191,7 @@
                 "value":20
             }
         ]
-    },	
+    },
     {
         "id":"anakis_did_you_find_my_sister",
         "message":"Did you find my sister?",
@@ -200,23 +234,43 @@
                 "value":40
             }
         ]
-    },	
+    },
     {
         "id":"anakis_can_you_take_revenge",
-        "message":"Can you find the Basilisk and kill it? Its blood is magical and could maybe help my sister.",
+        "message":"Can you find the Basilisk and kill it? But take care that no the same fate befells you, that happened to my sister. ",
         "replies":[
             {
-                "text":"Yes, I will help you.",
-                "nextPhraseID":"anakis_agreed_take_revenge"
-            },
-            {
-                "text":"I already found a Basilisk and killed it.",
+                "text":"I already found the Basilisk and killed it.",
                 "nextPhraseID":"anakis_thank_taking_revenge",
                 "requires":[
                     {
                         "requireType":"killedMonster",
                         "requireID":"old_basilisk",
                         "value":1
+                    }
+                ]
+            },
+            {
+                "text":"I will take revenge for your sister and find a way to kill that Basilisk.",
+                "nextPhraseID":"anakis_agreed_take_revenge",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    }
+                ]
+            },
+            {
+                "text":"I will take revenge, but let me first think if it is possible to help your sister.",
+                "nextPhraseID":"anakis_talk_to_priest",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
                     }
                 ]
             },
@@ -242,10 +296,10 @@
                 "value":70
             }
         ]
-    },	
+    },
     {
         "id":"anakis_did_you_take_revenge",
-        "message":"Did you kill the Basilisk and did you get some Basilisk blood?",
+        "message":"Did you kill the Basilisk?",
         "replies":[
             {
                 "text":"I found the Basilisk and killed it, but I decided to take the blood for myself.",
@@ -255,26 +309,69 @@
                         "requireType":"killedMonster",
                         "requireID":"old_basilisk",
                         "value":1
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":30
+                    }
+                ]
+            },
+            {
+                "text":"I found the Basilisk and killed it.",
+                "nextPhraseID":"anakis_thank_taking_revenge",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":75,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1
+                    }
+                ]
+            },
+            {
+                "text":"I found no way to help your sister, but I took revenge and killed the Basilisk.",
+                "nextPhraseID":"anakis_thank_taking_revenge",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":75
+                    },
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":30,
+                        "negate":true
                     }
                 ]
             },
             {
                 "text":"No, not yet.",
                 "nextPhraseID":"X"
+            },
+            {
+                "text":"I will take revenge, but let me first think if it is possible to help your sister.",
+                "nextPhraseID":"anakis_talk_to_priest"
             }
         ]
     },
-
     {
         "id":"anakis_thank_taking_revenge",
-        "message":"Oh no. The Basillisks fresh blood is magical and could have saved the life of my sister. Now it is too late. I will go now and morn for my sister. ",
+        "message":"Thank you for taking revenge for Juttarka. I will go now and morn for my sister. ",
         "replies":[
             {
-                "text":"I am sorry. Goodbye.",
-                "nextPhraseID":"R"
-            },
-            {
-                "text":"Bad luck. Goodbye.",
+                "text":"N",
                 "nextPhraseID":"R"
             }
         ],
@@ -283,12 +380,22 @@
                 "rewardType":"questProgress",
                 "rewardID":"quick_glance",
                 "value":90
+            },
+            {
+                "rewardType":"spawnAll",
+                "rewardID":"anakis_at_home",
+                "mapName":"brimhaven7"
+            },
+            {
+                "rewardType":"removeSpawnArea",
+                "rewardID":"anakis",
+                "mapName":"brimhaven7"
             }
         ]
     },
     {
         "id":"anakis_thank_healing_sister",
-        "message":"Thank you so much for rescuing my sister. She just came out of the cave and told me what you did for her. I will now go home, too.",
+        "message":"Thank you so much for rescuing my sister Juttarka. She just came out of the cave and told me what you did for her. I will now go home, too.",
         "replies":[
             {
                 "text":"N",
@@ -300,12 +407,22 @@
                 "rewardType":"questProgress",
                 "rewardID":"quick_glance",
                 "value":90
+            },
+            {
+                "rewardType":"spawnAll",
+                "rewardID":"anakis_at_home",
+                "mapName":"brimhaven7"
+            },
+            {
+                "rewardType":"removeSpawnArea",
+                "rewardID":"anakis",
+                "mapName":"brimhaven7"
             }
         ]
     },
     {
         "id":"anakis_sad_blood_not_use_for_sister",
-        "message":"Oh no. The Basillisks fresh blood is magical and could have saved the life of my sister. Now it is too late. Why did you not even try to help her? Now i will go and morn for my sister. ",
+        "message":"Oh no. Why did you not even try to help her? Now i will go and morn for my sister. ",
         "replies":[
             {
                 "text":"N",
@@ -317,16 +434,16 @@
                 "rewardType":"questProgress",
                 "rewardID":"quick_glance",
                 "value":90
-            }
-        ]
-    },
-    {
-        "id":"anakis_will_leave",
-        "message":"I will leave now.",
-        "replies":[
+            },
             {
-                "text":"N",
-                "nextPhraseID":"R"
+                "rewardType":"spawnAll",
+                "rewardID":"anakis_at_home",
+                "mapName":"brimhaven7"
+            },
+            {
+                "rewardType":"removeSpawnArea",
+                "rewardID":"anakis",
+                "mapName":"brimhaven7"
             }
         ]
     },
@@ -338,37 +455,12 @@
                 "rewardType":"questProgress",
                 "rewardID":"quick_glance_hidden_found_statue",
                 "value":10
-            },
-            {
-                "rewardType":"questProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":100
             }
         ]
     },
     {
         "id":"basiliskcave2_check_sister_statue",
         "replies":[
-            {
-                "nextPhraseID":"X",
-                "requires":[
-                    {
-                        "requireType":"questProgress",
-                        "requireID":"quick_glance_hidden_found_statue",
-                        "value":20
-                    }
-                ]
-            },
-            {
-                "nextPhraseID":"X",
-                "requires":[
-                    {
-                        "requireType":"questProgress",
-                        "requireID":"quick_glance",
-                        "value":50
-                    }
-                ]
-            },
             {
                 "nextPhraseID":"basiliskcave2_sister_statue_questprogress",
                 "requires":[
@@ -386,15 +478,7 @@
                 ]
             },
             {
-                "nextPhraseID":"sister_statue",
-                "requires":[
-                    {
-                        "requireType":"questProgress",
-                        "requireID":"quick_glance_hidden_position",
-                        "value":100,
-                        "negate":true
-                    }
-                ]
+                "nextPhraseID":"sister_statue"
             }
         ]
     },
@@ -414,10 +498,10 @@
         ]
     },
     {
-        "id":"basiliskcave2_check_turn_to_stone1",
+        "id":"basiliskcave2_check_turn_to_stone4",
         "replies":[
             {
-                "nextPhraseID":"basiliskcave2_turn_to_stone_position1",
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position4",
                 "requires":[
                     {
                         "requireType":"killedMonster",
@@ -435,10 +519,10 @@
         ]
     },
     {
-        "id":"basiliskcave2_check_turn_to_stone2",
+        "id":"basiliskcave2_check_turn_to_stone12",
         "replies":[
             {
-                "nextPhraseID":"basiliskcave2_turn_to_stone_position2",
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position12",
                 "requires":[
                     {
                         "requireType":"killedMonster",
@@ -456,10 +540,10 @@
         ]
     },
     {
-        "id":"basiliskcave2_check_turn_to_stone3",
+        "id":"basiliskcave2_check_turn_to_stone13",
         "replies":[
             {
-                "nextPhraseID":"basiliskcave2_turn_to_stone_position3",
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position13",
                 "requires":[
                     {
                         "requireType":"killedMonster",
@@ -477,77 +561,280 @@
         ]
     },
     {
-        "id":"basiliskcave2_turn_to_stone_position1",
+        "id":"basiliskcave2_check_turn_to_stone14",
         "replies":[
             {
-                "nextPhraseID":"basiliskcave2_turn_to_stone"
-            }
-        ],
-        "rewards":[
-            {
-                "rewardType":"questProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":10
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":20
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":30
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":90
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":80
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position14",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
             }
         ]
     },
     {
-        "id":"basiliskcave2_turn_to_stone_position2",
+        "id":"basiliskcave2_check_turn_to_stone15",
         "replies":[
             {
-                "nextPhraseID":"basiliskcave2_turn_to_stone"
-            }
-        ],
-        "rewards":[
-            {
-                "rewardType":"questProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":20
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":10
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":30
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":90
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":80
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position15",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
             }
         ]
     },
     {
-        "id":"basiliskcave2_turn_to_stone_position3",
+        "id":"basiliskcave2_check_turn_to_stone16",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position16",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_check_turn_to_stone22",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position22",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_check_turn_to_stone23",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position23",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_check_turn_to_stone24",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position24",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_check_turn_to_stone25",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position25",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_check_turn_to_stone32",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position32",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_check_turn_to_stone33",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position33",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_check_turn_to_stone34",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position34",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_check_turn_to_stone35",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position35",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_check_turn_to_stone43",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position43",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_check_turn_to_stone44",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone_position44",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"wear",
+                        "requireID":"hand_mirror",
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position4",
         "replies":[
             {
                 "nextPhraseID":"basiliskcave2_turn_to_stone"
@@ -557,30 +844,315 @@
             {
                 "rewardType":"questProgress",
                 "rewardID":"quick_glance_hidden_position",
-                "value":30
+                "value":4
             },
             {
                 "rewardType":"removeQuestProgress",
                 "rewardID":"quick_glance_hidden_position",
-                "value":20
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":10
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":90
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":80
+                "value":99
             }
         ]
-    },	
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position12",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":12
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position13",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":13
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position14",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":14
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position15",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":15
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position16",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":16
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position22",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":22
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position23",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":23
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position24",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":24
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position25",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":25
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position32",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":32
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position33",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":33
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position34",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":34
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position35",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":35
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position43",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":43
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
+    {
+        "id":"basiliskcave2_turn_to_stone_position44",
+        "replies":[
+            {
+                "nextPhraseID":"basiliskcave2_turn_to_stone"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":44
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":99
+            }
+        ]
+    },
     {
         "id":"basiliskcave2_turn_to_stone",
         "message":"You see an old Basilisk. And he glances at you. \n\nWhen Suddenly you feel your movements getting slower and your heartbeat drop... \n...while you are slowly turning to stone.",
@@ -589,49 +1161,6 @@
                 "rewardType":"actorCondition",
                 "rewardID":"turn_to_stone",
                 "value":998
-            }
-        ]
-    },	
-
-    {
-        "id":"basiliskcave_reset",
-        "replies":[
-            {
-                "nextPhraseID":"basiliskcave_reset2",
-                "requires":[
-                    {
-                        "requireType":"questProgress",
-                        "requireID":"quick_glance_hidden_found_statue",
-                        "value":20
-                    }
-                ]
-            }
-        ],
-        "rewards":[
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":10
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":20
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":30
-            },
-            {
-                "rewardType":"removeQuestProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":100
-            },
-            {
-                "rewardType":"questProgress",
-                "rewardID":"quick_glance_hidden_position",
-                "value":80
             }
         ]
     },
@@ -653,12 +1182,87 @@
             {
                 "rewardType":"removeQuestProgress",
                 "rewardID":"quick_glance_hidden_position",
-                "value":80
+                "value":4
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":12
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":13
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":14
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":15
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":16
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":22
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":23
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":24
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":25
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":32
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":33
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":34
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":35
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":43
+            },
+            {
+                "rewardType":"removeQuestProgress",
+                "rewardID":"quick_glance_hidden_position",
+                "value":44
             },
             {
                 "rewardType":"questProgress",
                 "rewardID":"quick_glance_hidden_position",
-                "value":90
+                "value":99
             }
         ]
     },
@@ -733,12 +1337,26 @@
         "message":"You killed the Basilisk and the blood flows out of its wounds.",
         "replies":[
             {
-                "text":"I pour the blood over the stone statue.",
-                "nextPhraseID":"basiliskcave2_decided_to_heal"
+                "text":"I use the crystal vial and pour the blood over the stone statue.",
+                "nextPhraseID":"basiliskcave2_decided_to_heal",
+                "requires":[
+                    {
+                        "requireType":"inventoryKeep",
+                        "requireID":"empty_crystal_vial",
+                        "value":1
+                    }
+                ]
             },
             {
-                "text":"I keep the blood for myself using an empty vial I found.",
-                "nextPhraseID":"basiliskcave2_keep_blood"
+                "text":"I keep the blood for myself using the empty crystal vial.",
+                "nextPhraseID":"basiliskcave2_keep_blood",
+                "requires":[
+                    {
+                        "requireType":"inventoryRemove",
+                        "requireID":"empty_crystal_vial",
+                        "value":1
+                    }
+                ]
             }
         ],
         "rewards":[
@@ -751,7 +1369,7 @@
     },
     {
         "id":"basiliskcave2_decided_to_heal",
-        "message":"Slowly the stone statue gets colorful and starts to move. You healed the woman!\n\nAfter she is back to life, she thanks you and tells you, that she is Anakis' sister.\n\nShe will leave the cave now and meet her waitng brother.",
+        "message":"Slowly the stone statue gets colorful and starts to move. You healed the woman!\n\nAfter she is back to life, she thanks you and tells you, that she is Anakis' sister Juttarka.\n\nShe will leave the cave now and meet her waiting brother.",
         "rewards":[
             {
                 "rewardType":"questProgress",
@@ -767,9 +1385,14 @@
                 "rewardType":"questProgress",
                 "rewardID":"quick_glance_hidden_found_statue",
                 "value":30
+            },
+            {
+                "rewardType":"spawnAll",
+                "rewardID":"juttarka_at_home",
+                "mapName":"brimhaven7"
             }
         ]
-    },	
+    },
     {
         "id":"basiliskcave2_keep_blood",
         "rewards":[
@@ -798,5 +1421,302 @@
                 "value":40
             }
         ]
+    },
+    {
+        "id":"juttarka_thank",
+        "message":"Thank you for saving my life. Please come back to me when you are some years older..",
+        "replies":[
+            {
+                "text":"It was a pleasure for me.",
+                "nextPhraseID":"X"
+            }
+        ]
+    },
+    {
+        "id":"anakis_at_home_morning",
+        "message":"Thank you for trying to help my sister. I am so sad."
+    },
+    {
+        "id":"anakis_at_home_thanks",
+        "message":"Thank you so much for helping my sister Juttarka. We are all very happy."
+    },
+    {
+        "id":"anakis_at_home_angry",
+        "message":"Go away. I don't want to talk to people like you."
+    },
+    {
+        "id":"fallhaven_potions_offer_crystal_vial",
+        "message":"Yes, I have some crystal vials. I can sell you one for 50 gold pieces.",
+        "replies":[
+            {
+                "text":"That is too expensive for me.",
+                "nextPhraseID":"fallhaven_potions"
+            },
+            {
+                "text":"I take one.",
+                "nextPhraseID":"fallhaven_potions_buy_crystal_vial",
+                "requires":[
+                    {
+                        "requireType":"inventoryRemove",
+                        "requireID":"gold",
+                        "value":50
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"fallhaven_potions_buy_crystal_vial",
+        "message":"Here is your crytsal vial. Thanks for the 50 gold pieces.",
+        "replies":[
+            {
+                "text":"N",
+                "nextPhraseID":"fallhaven_potions"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"giveItem",
+                "rewardID":"empty_crystal_vial",
+                "value":1
+            }
+        ]
+    },
+    {
+        "id":"fangwurm_start",
+        "replies":[
+            {
+                "nextPhraseID":"fangwurm_thank_rescuing_sister",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":85
+                    }
+                ]
+            },
+            {
+                "nextPhraseID":"fangwurm_angry",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":30
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":90
+                    }
+                ]
+            },
+            {
+                "nextPhraseID":"fangwurm_angry",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":50
+                    }
+                ]
+            },
+            {
+                "nextPhraseID":"fangwurm_thank_killing_basilisk",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":60
+                    }
+                ]
+            },
+            {
+                "nextPhraseID":"fangwurm_thank_killing_basilisk",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":90
+                    }
+                ]
+            },
+            {
+                "nextPhraseID":"fangwurm_talking"
+            }
+        ]
+    },
+    {
+        "id":"fangwurm_info_about_blood",
+        "message":"The Basilisks blood is magical. It can protect against damage if applied to the skin. Fresh and warm Basilisks blood might even heal a person turned to stone.\nBut I don't know about a way of killing a Basilisk.",
+        "replies":[
+            {
+                "text":"I already killed the Basilisk.",
+                "nextPhraseID":"fangwurm_thank_killing_basilisk",
+                "requires":[
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1
+                    }
+                ]
+            },
+            {
+                "text":"You are right, it will not be possible to kill the Basilisk.",
+                "nextPhraseID":"X"
+            },
+            {
+                "text":"I will find a way to kill the Basilisk.",
+                "nextPhraseID":"fangwurm_info_vial"
+            }
+        ],
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance",
+                "value":77
+            }
+        ]
+    },
+    {
+        "id":"anakis_talk_to_priest",
+        "message":"Do you think it is possbile to help her? Maybe Fangwurm the priest of Brimhaven has some information.",
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance",
+                "value":70
+            },
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance",
+                "value":75
+            }
+        ]
+    },
+    {
+        "id":"fangwurm_thank_rescuing_sister",
+        "message":"Thank you for rescuing Anakis' sister. May the shadow always be with you."
+    },
+    {
+        "id":"fangwurm_angry",
+        "message":"I am sad, that you took the blood for yourself instead of trying to help Anakis' sister. Please leave now.",
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_found_statue",
+                "value":50
+            }
+        ]
+    },
+    {
+        "id":"fangwurm_thank_killing_basilisk",
+        "message":"Thank you for killing the Basilisk, but you should better have talked to me before killing it, because its magical blood is now dried up and vasted. May the shadow always be with you.",
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance_hidden_found_statue",
+                "value":60
+            }
+        ]
+    },
+    {
+        "id":"fangwurm_talking",
+        "message":"May the shadow be with you.",
+        "replies":[
+            {
+                "text":"I killed the Basilisk and took the blood for myself.",
+                "nextPhraseID":"fangwurm_angry",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":30
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":85,
+                        "negate":true
+                    }
+                ]
+            },
+            {
+                "text":"I killed the Basilisk in the cave.",
+                "nextPhraseID":"fangwurm_thank_killing_basilisk",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance_hidden_found_statue",
+                        "value":30,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"killedMonster",
+                        "requireID":"old_basilisk",
+                        "value":1
+                    }
+                ]
+            },
+            {
+                "text":"Can you please tell me again, what you know about the Basilisks blood? ",
+                "nextPhraseID":"fangwurm_info_about_blood",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":77
+                    }
+                ]
+            },
+            {
+                "text":"I believe that Anakis' sister was turned to stone by the Basilisk in the cave. Do you have any idea if I could help her?",
+                "nextPhraseID":"fangwurm_info_about_blood",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":77,
+                        "negate":true
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":50
+                    }
+                ]
+            },
+            {
+                "text":"Anakis' sister is missing. Can you tell me more about the Basilisk in the cave.",
+                "nextPhraseID":"fangwurm_info_basilisk",
+                "requires":[
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":10
+                    },
+                    {
+                        "requireType":"questProgress",
+                        "requireID":"quick_glance",
+                        "value":50,
+                        "negate":true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":"fangwurm_info_vial",
+        "message":"You would need a special crystal vial that is resistent to the Basilisks blood to handle it. The potion maker in Fallhaven might sell them. \nMay the shadow be with you.",
+        "rewards":[
+            {
+                "rewardType":"questProgress",
+                "rewardID":"quick_glance",
+                "value":78
+            }
+        ]
+    },
+    {
+        "id":"fangwurm_info_basilisk",
+        "message":"The Basilisk will turn you to stone when you go near him an your eyes meet its eyes. You can come back to me if you know what happened to Anakis' sister."
     }
 ]

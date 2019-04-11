@@ -11,12 +11,15 @@
                 "max":-10
             },
             "increaseCurrentAP":{
-                "min":0,
-                "max":0
+                "min":-100,
+                "max":-100
             }
         },
         "abilityEffect":{
-            "increaseMoveCost":0
+            "increaseMoveCost":100,
+            "increaseUseItemCost":100,
+            "increaseReequipCost":100,
+            "increaseAttackCost":100
         }
     },
     {

@@ -13,7 +13,7 @@
     },
     {
         "id":"basilisk_blood",
-        "iconID":"items_misc:18",
+        "iconID":"items_consumables:33",
         "name":"Basilisk blood",
         "displaytype":"quest",
         "hasManualPrice":1,
@@ -28,5 +28,14 @@
                 }
             ]
         }
+    },
+    {
+        "id":"empty_crystal_vial",
+        "iconID":"items_consumables:58",
+        "name":"Empty crystal vial",
+        "displaytype":"quest",
+        "hasManualPrice":1,
+        "baseMarketCost":0,
+        "category":"flask"
     }
 ]
